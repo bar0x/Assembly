@@ -1,3 +1,7 @@
+;Autore: Baroni Mattia
+;Data: 18.11.21
+;Consegna: DATI DUE VALORI IN INGRESSO POT(COMPRESO TRA 0 E 2) E BASE(COMPRESO TRA1 E 3) CALCOLARE IL VALORE: base ^pot
+
 .model small
 .stack 200h
 .data
@@ -12,11 +16,10 @@ main:
 	mov ax,@data
 	mov ds,ax
 	
+	;richiedo il valore della potenza:
 	lea dx, stringp ;stampa a video di stringp
 	mov ah,09h
 	int 21h
-	
-	;richiedo il valore della potenza:
 	
 	mov ah,01h ;richiedo l'inserimento del valore della potenza (andrà a finire in al)
 	int 21h
@@ -27,7 +30,7 @@ main:
 	jb errore   ;salto se è più piccolo
 	cmp pot,'2' ;comparo pot con il 2
 	ja errore   ;salto se è più grosso
-	jmp fine
+	
 	
 	;richiedo il valore della base:
 	
@@ -38,8 +41,17 @@ main:
 	mov ah,01h
 	int 21h
 	
+	mov base,al
+	
+	cmp base,'1'
+	jb errore
+	cmp base,'3'
+	ja errore 
 	
 	
+	mul base,pot
+	mov 
+	jmp poggers 
 	
 	
 	
@@ -61,3 +73,4 @@ fine:
 	mov ah,4ch
 	int 21h
 	
+poggers:
