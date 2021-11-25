@@ -2,6 +2,6 @@
 
 ![gif di un arduino (ok?)](g2.gif)
 
-Questa repository ha lo scopo di archiviare gli esercizi di assembly fatti in classe.
+Questa repository ha lo scopo di archiviare gli esercizi in assembly fatti in classe.
 
 # Mattia Baroni
