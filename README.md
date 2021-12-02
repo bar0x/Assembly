@@ -1,4 +1,4 @@
-# Assembly (Sistemi e Telecomunicazione)
+# Assembly (Sistemi e Reti)
 
 ![gif di un arduino (ok?)](g2.gif)
 
