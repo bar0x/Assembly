@@ -1,0 +1,5 @@
+MOUNT T C:\tasm\BIN\
+MOUNT M Z:\assembly\
+PATH=T:\
+M:
+dir
