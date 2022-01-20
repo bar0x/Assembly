@@ -35,13 +35,8 @@ salto condizionato e salto incondizionato:
 	fine:
 	  asdasdsjadansf)
 --------------------------------------------------------------
-cmp: sottrazione fra i due operandi e salta se dalla sottrazione un valore Ë maggiore.
+cmp: sottrazione fra i due operandi e salta se dalla sottrazione un valore √® maggiore.
 	tutto tranne dato imm + dato imm
-
-
-02h: stampa di un codice
-      seguito da int 21h
-
 
 
 
@@ -64,9 +59,9 @@ int 21h
 "comparazione" 
 
 cmp al,61h
-jb fine1   se variab Ë piu piccolo salta a fine
+jb fine1   se variab √® piu piccolo salta a fine
 cmp al,7ah
-ja fine1   se variab Ë pi˘ grande salta a fine
+ja fine1   se variab √® pi√π grande salta a fine
 ------------------
 vado a capo:
 ;invio a capo
@@ -81,24 +76,24 @@ Acquisizione dato da tastiera:
 mov ah,01h
 int 21h
 
-il valore inserito poi si trover‡ in al
-per spostare il valore qindi baster‡ fare:
+il valore inserito poi si trover√† in al
+per spostare il valore qindi baster√† fare:
 mov *nomevariabile*,al
 -----------------
 Mul:
  mul *nomevariabile*
 
 la mul accetta come base solo i numeri in al.
-perciÚ prima di eseguire la stessa si dovr‡ spostare il valore da usare come base in al
+perci√≤ prima di eseguire la stessa si dovr√† spostare il valore da usare come base in al
 ------------------------
 inc e dec:
 
-inc: incrementa la variabile di 1 unit‡, viene usato principalmente per fare i contatori
+inc: incrementa la variabile di 1 unit√†, viene usato principalmente per fare i contatori
 (usato spesso nelle mul)
 sintassi:
 
  inc cl
-dec: decrementa la variabile di 1 unit‡, viene usato principalmente per fare i contatori
+dec: decrementa la variabile di 1 unit√†, viene usato principalmente per fare i contatori
 (usato spesso nelle mul)
 sintassi:
  dec cl
@@ -115,4 +110,10 @@ il loop esegue il ciclo tante volte quante il numero inserito nel registro CX
 step 1: inizializzo cx,
 step 2: inserisco l'etichetta del loop,
 step 3: inserisco "loop (etichetta)".
+-------------------------
+codici stampa/acquisizione:
+
+01 08 	acquisizione dati (echo/non echo)
+09	stampa stringa
+02	stampa carattere
 -------------------------
