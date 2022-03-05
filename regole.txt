@@ -1,0 +1,119 @@
+Registri:
+ax, bx, cx, dx
+16 bit
+divisi in ah e al, bh e bl, ...
+
+xl: registri a 8 bit.
+xx: registri a 16 bit.
+
+memorizzazione dati generale.
+- ax: comunicazione con il dos (ah) si eseguono cose,
+- dx: registro contenente dato e stringa per la stampa (lea stringhe).
+- al: registro usato per la moltiplicazione default. i dati in acquisizione transitano li
+-------------------------------------------------------------
+mov:
+vuole 2 operandi:
+-almeno uno deve essere un registro o cella dati
+  registro e registro
+  registro e dato
+  dato e registro
+ ....
+ NON dato immediato e datoimmediato
+
+sintassi
+--------------------------------------------------------------
+salti (2 tipi):   p. 140
+ 
+salto condizionato e salto incondizionato:
+
+-condizionati:
+  jae: salta solo se   (viene usato solo dopo il cmp)
+  j
+-incondizionato:
+  jmp: non dipende da dati, solo dalla logica.
+	(es. sintassi: jmp fine
+	fine:
+	  asdasdsjadansf)
+--------------------------------------------------------------
+cmp: sottrazione fra i due operandi e salta se dalla sottrazione un valore è maggiore.
+	tutto tranne dato imm + dato imm
+
+
+
+mul num,al: moltiplicazione fra registro e numero. utilizzo obbligatorio di al (spostare uno dei fattori prima in al quindi).
+	 il risultato viene quindi messo in al. 
+
+		es. mov al, fat1
+		    mov bl, fat2
+		    mul bl.
+
+push: infila un dato nello stack,
+pop:  tira fuori un dato dallo stack, vuole per forza un registro
+------------------
+stampa stringa:
+
+lea dx, (nomestringa)
+mov ah,09h
+int 21h
+------------------
+"comparazione" 
+
+cmp al,61h
+jb fine1   se variab è piu piccolo salta a fine
+cmp al,7ah
+ja fine1   se variab è più grande salta a fine
+------------------
+vado a capo:
+;invio a capo
+	mov ah,02h
+	int 21h
+	mov dl,13
+	mov ah,02h
+	int 21h
+------------------
+Acquisizione dato da tastiera:
+
+mov ah,01h
+int 21h
+
+il valore inserito poi si troverà in al
+per spostare il valore qindi basterà fare:
+mov *nomevariabile*,al
+-----------------
+Mul:
+ mul *nomevariabile*
+
+la mul accetta come base solo i numeri in al.
+perciò prima di eseguire la stessa si dovrà spostare il valore da usare come base in al
+------------------------
+inc e dec:
+
+inc: incrementa la variabile di 1 unità, viene usato principalmente per fare i contatori
+(usato spesso nelle mul)
+sintassi:
+
+ inc cl
+dec: decrementa la variabile di 1 unità, viene usato principalmente per fare i contatori
+(usato spesso nelle mul)
+sintassi:
+ dec cl
+------------------------
+Loop:
+
+sintassi:
+	:nomeloop
+	 comandi
+	 comandi
+	 LOOP nomeloop
+
+il loop esegue il ciclo tante volte quante il numero inserito nel registro CX
+step 1: inizializzo cx,
+step 2: inserisco l'etichetta del loop,
+step 3: inserisco "loop (etichetta)".
+-------------------------
+codici stampa/acquisizione:
+
+01 08 	acquisizione dati (echo/non echo)
+09	stampa stringa
+02	stampa carattere
+-------------------------
