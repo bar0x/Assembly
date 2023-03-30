@@ -6,7 +6,9 @@
 .data
 	stringi db  "inserisci il numero iniziale: ", 13, 10,"$"
 	errore db "il valore inserito non vale!", 13, 10 ,"$"
-    num db ?
+    stringo db "fine del programma", 13,10,"$"
+    num db 0
+    
 	
 .code
 main: 
@@ -28,11 +30,23 @@ main:
     ;verifica numero parte 1:
     cmp num,"0"
     ja errore
-	
-	
-	
+
+    ;verifica numero parte 2:
+    cmp num, "9"
+    jb errore
+
+    mov bl,num
+
+    jmp printing
+printing:
+    cmp bl,num
+    je fine
+    mov ah,bl
+    mov ah,09h
+    dec bl
+
 fine:
-    
+    lea dx,stringo
 	
 	
 	

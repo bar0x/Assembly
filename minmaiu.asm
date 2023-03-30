@@ -1,16 +1,23 @@
+;regole registri:
+;	al: acquisisce il dato richiesto in input in automatico
+;	
+;	
+;	
 .model small
 .stack 200h
 .data
     car db ?
-    stringa1 db "Inserisci un carattere minuscolo",13,10,"$"
+    stringa1 db "Inserisci un carattere minuscolo",13,10,"$"  ;db:tatabyte dw:dataword
     stringa2 db "Il carattere maiuscolo e ",13,10,"$"
+	
+	
 .code
 main:
     mov ax,@data
     mov ds,ax
     ;stampa video di stringa1.
     lea dx,stringa1
-    mov ah,09h
+    mov ah,09h        ;codice stampa a schermo senza eco e senza visualizzazione
     int 21h
     ;capo.
     mov dx,10
@@ -20,7 +27,7 @@ main:
     mov ah,02h
     int 21h
     ;imput carattere minuscolo.
-    mov ah,01h
+    mov ah,01h  ;codice imput da tastiera (?)
     int 21h
     mov ah,0
     mov car,al
@@ -33,13 +40,13 @@ main:
     int 21h
     ;stampa a video di stringa2.
     lea dx,stringa2
-    mov ah,09h
+    mov ah,09h ;codice stampa a schermo 
     int 21h
     ;sottraggo il necessario per arrivare al corrispettivo carattere minuscolo nella tabella ASCII (in questo caso 32) e lo stampo a video.
     mov bl,car
     sub bl,32
     mov dl,bl
-    mov ah,02h
+    mov ah,02h ;stampa schermo? spazio/capo?
     int 21h
 
     mov ah,4Ch
